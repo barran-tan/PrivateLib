@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    package="com.barran.lib">
+    package="com.barran.lib.test">
 
     <application
         android:allowBackup="true"

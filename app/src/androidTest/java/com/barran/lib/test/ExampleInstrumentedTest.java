@@ -1,4 +1,4 @@
-package com.barran.lib;
+package com.barran.lib.test;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
