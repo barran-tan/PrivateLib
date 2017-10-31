@@ -6,4 +6,11 @@
         <attr name="android:textColor" />
     </declare-styleable>
 
+    <declare-styleable name="UpView">
+        <attr name="max_digit" format="integer" />
+        <attr name="text_size" format="dimension" />
+        <attr name="text_color" format="color" />
+        <attr name="shining_color" format="color" />
+    </declare-styleable>
+
 </resources>
