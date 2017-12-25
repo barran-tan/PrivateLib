@@ -50,6 +50,23 @@
         app:bgStrokeWidth="1dp" />
 
     <com.barran.lib.view.ColorfulTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@drawable/bg_btn"
+        android:clickable="true"
+        android:text="use xml selector" />
+
+    <com.barran.lib.view.ColorfulTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@drawable/bg_btn"
+        android:clickable="true"
+        android:text="use xml selector with round radius"
+        app:bgRoundRadius="true" />
+
+    <com.barran.lib.view.ColorfulTextView
         style="@style/Tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
