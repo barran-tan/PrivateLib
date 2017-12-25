@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.barran.lib.view.UpView
+            android:id="@+id/activity_test_view_upview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:max_digit="3" />
+
+        <EditText
+            android:id="@+id/activity_test_view_edit"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_test_view_upview"
+            android:layout_marginTop="@dimen/margin"
+            android:background="@drawable/bg_edit"
+            android:inputType="numberSigned"
+            android:padding="5dp" />
+
+        <com.barran.lib.view.ColorfulTextView
+            android:id="@+id/activity_test_view_set"
+            style="@style/RoundRadiusBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/activity_test_view_edit"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_toRightOf="@id/activity_test_view_edit"
+            android:text="set" />
+
+    </RelativeLayout>
+
+    <com.barran.lib.view.ColorfulTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:padding="3dp"
+        android:text="custom colorful textview"
+        app:bgRadius="5dp"
+        app:bgSolidColor="@color/colorPrimary"
+        app:bgStrokeColor="@android:color/holo_red_light"
+        app:bgStrokeWidth="1dp" />
+
+    <com.barran.lib.view.ColorfulTextView
+        style="@style/Tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:text="Tag style" />
+
+    <com.barran.lib.view.ColorfulTextView
+        style="@style/Tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:text="Tag style with round radius"
+        app:bgRoundRadius="true" />
+
+    <com.barran.lib.view.ColorfulTextView
+        style="@style/RoundRadiusBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:text="RoundRadiusBtn style" />
+
+</LinearLayout>

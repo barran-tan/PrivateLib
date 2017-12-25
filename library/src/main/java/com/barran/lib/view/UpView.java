@@ -296,6 +296,7 @@ public class UpView extends View {
         switch (MeasureSpec.getMode(widthMeasureSpec)) {
             case MeasureSpec.UNSPECIFIED:
                 width = (int) mMinWidth;
+                break;
             case MeasureSpec.AT_MOST:
             case MeasureSpec.EXACTLY:
                 if (width < mMinWidth) {
@@ -307,6 +308,7 @@ public class UpView extends View {
         switch (MeasureSpec.getMode(heightMeasureSpec)) {
             case MeasureSpec.UNSPECIFIED:
                 height = (int) mMinHeight;
+                break;
             case MeasureSpec.AT_MOST:
             case MeasureSpec.EXACTLY:
                 if (height < mMinHeight) {

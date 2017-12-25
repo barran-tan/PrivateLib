@@ -13,4 +13,12 @@
         <attr name="shining_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="ColorfulTextView">
+        <attr name="bgRoundRadius" format="boolean" />
+        <attr name="bgRadius" format="dimension"/>
+        <attr name="bgSolidColor" format="color"/>
+        <attr name="bgStrokeColor" format="color"/>
+        <attr name="bgStrokeWidth" format="dimension"/>
+    </declare-styleable>
+
 </resources>

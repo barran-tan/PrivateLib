@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.activity_main_test_lottie:
                 intent.setClass(MainActivity.this, TestLottieActivity.class);
                 break;
+
+            case R.id.activity_main_test_view:
+                intent.setClass(MainActivity.this, TestViewActivity.class);
+                break;
         }
         
         startActivity(intent);

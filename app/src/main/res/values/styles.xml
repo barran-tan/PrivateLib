@@ -8,4 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Tag">
+        <item name="bgSolidColor">@android:color/white</item>
+        <item name="bgRadius">5dp</item>
+        <item name="bgStrokeWidth">1dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:textSize">@dimen/text_14</item>
+        <item name="bgStrokeColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="RoundRadiusBtn">
+        <item name="bgSolidColor">@android:color/white</item>
+        <item name="bgRoundRadius">true</item>
+        <item name="bgStrokeWidth">1dp</item>
+        <item name="android:minWidth">60dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="bgStrokeColor">@color/colorPrimary</item>
+    </style>
+
 </resources>
