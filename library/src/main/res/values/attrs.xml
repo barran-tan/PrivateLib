@@ -21,4 +21,21 @@
         <attr name="bgStrokeWidth" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="LimitEditText">
+        <attr name="filterMode">
+            <enum name="NUMBER" value="0" />
+            <enum name="A_Z_NUMBER" value="1" />
+            <enum name="EMAIL" value="2" />
+            <enum name="PASSWORD" value="3" />
+            <enum name="CHINESE_ENGLISH" value="4" />
+            <enum name="CHINESE_ENGLISH_NUMBER" value="5" />
+            <enum name="CHINESE_ENGLISH_SPACE_DOT" value="6" />
+            <enum name="NO_CHINESE" value="7" />
+            <enum name="NO_EMOJI" value="8" />
+            <enum name="NO_CHINESE_EMOJI" value="9" />
+            <enum name="NONE" value="10" />
+        </attr>
+        <attr name="maxLength" format="integer" />
+    </declare-styleable>
+
 </resources>

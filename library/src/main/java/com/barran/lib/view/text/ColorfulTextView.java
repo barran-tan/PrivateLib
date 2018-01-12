@@ -1,4 +1,4 @@
-package com.barran.lib.view;
+package com.barran.lib.view.text;
 
 import android.content.Context;
 import android.content.res.TypedArray;

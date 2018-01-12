@@ -72,4 +72,45 @@ public class StringUtil {
         }
         return false;
     }
+
+    public static boolean containEmoji(String string) {
+        int len = string.length();
+        for (int i = 0; i < len; i++) {
+            char codePoint = string.charAt(i);
+            if (!isEmoji(codePoint)) { // 如果不能匹配,则该字符是Emoji表情
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 判断是否是Emoji
+     *
+     * @param codePoint
+     *            比较的单个字符
+     * @return
+     */
+    private static boolean isEmoji(char codePoint) {
+        return (codePoint == 0x0) || (codePoint == 0x9) || (codePoint == 0xA)
+                || (codePoint == 0xD) || ((codePoint >= 0x20) && (codePoint <= 0xD7FF))
+                || ((codePoint >= 0xE000) && (codePoint <= 0xFFFD))
+                || ((codePoint >= 0x10000) && (codePoint <= 0x10FFFF));
+    }
+
+    private static boolean isUtf8GraphChar(char codePoint) {
+        return ((codePoint >= 0x245F) && (codePoint <= 0x25E5))// utf8图形字符
+                || ((codePoint >= 0x2600) && (codePoint <= 0x26FF));// utf8图形字符
+    }
+
+    public static boolean containUtf8GraphChar(String string) {
+        int len = string.length();
+        for (int i = 0; i < len; i++) {
+            char codePoint = string.charAt(i);
+            if (isUtf8GraphChar(codePoint)) { // 如果不能匹配,则该字符是Emoji表情
+                return true;
+            }
+        }
+        return false;
+    }
 }
