@@ -12,8 +12,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.ViewGroup;
 
 import com.barran.lib.R;
+import com.barran.lib.utils.DisplayUtil;
+import com.barran.lib.utils.log.Logs;
+
+import java.util.logging.Logger;
 
 
 /**
@@ -42,22 +47,33 @@ public class ColorfulTextView extends AppCompatTextView{
 
     private int touchUpRadius;
 
+    private int leftLineColor;
+
+    private int lineWidth, lineHeight;
+
     public ColorfulTextView(Context context) {
         super(context);
     }
 
     public ColorfulTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        
+
         TypedArray array = context.obtainStyledAttributes(attrs,
                 R.styleable.ColorfulTextView);
-        
+
         // 默认是不使用正圆形的圆角，可修改默认值使全局生效
         roundRadius = array.getBoolean(R.styleable.ColorfulTextView_bgRoundRadius, false);
-        
+
+        leftLineColor = array.getColor(R.styleable.ColorfulTextView_leftLineColor, 0);
+        lineHeight = array.getDimensionPixelOffset(
+                R.styleable.ColorfulTextView_lineHeight,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        lineWidth = array.getDimensionPixelOffset(R.styleable.ColorfulTextView_lineWidth,
+                DisplayUtil.dp2px(3));
+
         // 解析xml定义的背景
         initDrawable(array);
-        
+
         array.recycle();
     }
 
@@ -80,7 +96,7 @@ public class ColorfulTextView extends AppCompatTextView{
             if (radius > 0) {
                 xmlDrawable.setCornerRadius(radius);
             }
-            
+
             super.setBackground(xmlDrawable);
         }
     }
@@ -99,7 +115,7 @@ public class ColorfulTextView extends AppCompatTextView{
             }
         }
     }
-    
+
     private void handleDrawable(Drawable drawable) {
         if (drawable instanceof StateListDrawable) {
             DrawableContainer.DrawableContainerState drawableContainerState = (DrawableContainer.DrawableContainerState) drawable
@@ -128,22 +144,49 @@ public class ColorfulTextView extends AppCompatTextView{
             ((GradientDrawable) drawable).setCornerRadius(touchUpRadius);
         }
         else {
-            Log.w(TAG, "invalid drawable type : " + drawable != null
+            Logs.w(TAG, "invalid drawable type : " + drawable != null
                     ? drawable.getClass().getSimpleName() : "null");
         }
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        
+
+        final int height = getHeight();
         if (roundRadius && touchUpRadius == 0) {
-            int height = getHeight();
             if (height > 0) {
                 touchUpRadius();
             }
         }
-        
+
+        if (height > 0 && leftLineColor != 0) {
+            buildLineDrawable();
+        }
+
         super.onLayout(changed, left, top, right, bottom);
+    }
+
+    private void buildLineDrawable() {
+        GradientDrawable line = new GradientDrawable();
+        line.setColor(leftLineColor);
+        int height = getHeight();
+        if (lineHeight == ViewGroup.LayoutParams.MATCH_PARENT) {
+            lineHeight = height - DisplayUtil.dp2px(3);
+        }
+        else if (lineHeight > height) {
+            lineHeight = height;
+        }
+
+        line.setBounds(0, 0, lineWidth, lineHeight);
+
+        Drawable[] compoundDrawables = getCompoundDrawables();
+        if (compoundDrawables.length >= 4) {
+            setCompoundDrawables(line, compoundDrawables[1], compoundDrawables[2],
+                    compoundDrawables[3]);
+        }
+        else {
+            setCompoundDrawables(line, null, null, null);
+        }
     }
 
     @Override
@@ -177,7 +220,7 @@ public class ColorfulTextView extends AppCompatTextView{
 
     public void buildBackground(DrawableBuilder builder){
         if(builder.solidColor != 0) {
-            xmlDrawable = new GradientDrawable();
+            GradientDrawable xmlDrawable = new GradientDrawable();
             xmlDrawable.setColor(builder.solidColor);
             xmlDrawable.setShape(GradientDrawable.RECTANGLE);
 
@@ -188,39 +231,44 @@ public class ColorfulTextView extends AppCompatTextView{
             if (builder.radius > 0) {
                 xmlDrawable.setCornerRadius(builder.radius);
             }
+            roundRadius = builder.roundRadius;
 
             setBackground(xmlDrawable);
+
+            if (roundRadius) {
+                touchUpRadius();
+            }
         }
     }
-    
+
     public static class DrawableBuilder {
         protected int solidColor;
         protected int strokeColor;
         protected int strokeWidth;
         protected int radius;
         protected boolean roundRadius;
-        
+
         public DrawableBuilder setSolidColor(int color) {
             solidColor = color;
             return this;
         }
-        
+
         public DrawableBuilder setStrokeColor(int color) {
             strokeColor = color;
             return this;
         }
-        
+
         public DrawableBuilder setStrokeWidth(int width) {
             strokeWidth = width;
             return this;
         }
-        
+
         public DrawableBuilder setRadius(int radius) {
             this.radius = radius;
             return this;
         }
-        
-        public DrawableBuilder setRoundRaddius(boolean round) {
+
+        public DrawableBuilder setRoundRadius(boolean round) {
             roundRadius = round;
             return this;
         }
