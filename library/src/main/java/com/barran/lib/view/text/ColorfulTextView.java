@@ -2,7 +2,7 @@ package com.barran.lib.view.text;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableContainer;
 import android.graphics.drawable.GradientDrawable;
@@ -11,14 +11,11 @@ import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import com.barran.lib.R;
 import com.barran.lib.utils.DisplayUtil;
 import com.barran.lib.utils.log.Logs;
-
-import java.util.logging.Logger;
 
 
 /**
@@ -41,11 +38,15 @@ public class ColorfulTextView extends AppCompatTextView{
 
     private static final String TAG = "ColorfulTextView";
 
+    private static final int INVALID_COLOR = 1;
+
     private boolean roundRadius;
 
-    private GradientDrawable xmlDrawable;
-
     private int touchUpRadius;
+
+    private int solidColor, radius;
+
+    private int strokeWidth, strokeColor;
 
     private int leftLineColor;
 
@@ -64,41 +65,56 @@ public class ColorfulTextView extends AppCompatTextView{
         // 默认是不使用正圆形的圆角，可修改默认值使全局生效
         roundRadius = array.getBoolean(R.styleable.ColorfulTextView_bgRoundRadius, false);
 
-        leftLineColor = array.getColor(R.styleable.ColorfulTextView_leftLineColor, 0);
+        // 自定义drawable属性
+        solidColor = array.getColor(R.styleable.ColorfulTextView_bgSolidColor,
+                INVALID_COLOR);
+        radius = array.getDimensionPixelOffset(R.styleable.ColorfulTextView_bgRadius, 0);
+        // stroke
+        strokeWidth = array
+                .getDimensionPixelOffset(R.styleable.ColorfulTextView_bgStrokeWidth, 0);
+        strokeColor = array.getColor(R.styleable.ColorfulTextView_bgStrokeColor,
+                INVALID_COLOR);
+
+        // 左侧竖线
+        leftLineColor = array.getColor(R.styleable.ColorfulTextView_leftLineColor, INVALID_COLOR);
         lineHeight = array.getDimensionPixelOffset(
                 R.styleable.ColorfulTextView_lineHeight,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         lineWidth = array.getDimensionPixelOffset(R.styleable.ColorfulTextView_lineWidth,
                 DisplayUtil.dp2px(3));
 
-        // 解析xml定义的背景
-        initDrawable(array);
+        // 设置xml自定义背景
+        initDrawable();
 
         array.recycle();
     }
 
-    private void initDrawable(TypedArray array) {
-        int solidColor = array.getColor(R.styleable.ColorfulTextView_bgSolidColor,
-                Color.TRANSPARENT);
-        if (solidColor != Color.TRANSPARENT) {
-            xmlDrawable = new GradientDrawable();
-            xmlDrawable.setColor(solidColor);
-            xmlDrawable.setShape(GradientDrawable.RECTANGLE);
-            int strokeWidth = array.getDimensionPixelOffset(
-                    R.styleable.ColorfulTextView_bgStrokeWidth, 0);
-            if (strokeWidth > 0) {
-                int strokeColor = array
-                        .getColor(R.styleable.ColorfulTextView_bgStrokeColor, solidColor);
-                xmlDrawable.setStroke(strokeWidth, strokeColor);
+    private void initDrawable() {
+        
+        if (solidColor == INVALID_COLOR) {
+            Drawable background = getBackground();
+            if (background instanceof ColorDrawable) {
+                solidColor = ((ColorDrawable) background).getColor();
             }
-            int radius = array
-                    .getDimensionPixelOffset(R.styleable.ColorfulTextView_bgRadius, 0);
-            if (radius > 0) {
-                xmlDrawable.setCornerRadius(radius);
-            }
-
-            super.setBackground(xmlDrawable);
         }
+        
+        if (solidColor != INVALID_COLOR) {
+            super.setBackground(buildDrawable());
+        }
+    }
+
+    private GradientDrawable buildDrawable() {
+        GradientDrawable xmlDrawable = new GradientDrawable();
+        xmlDrawable.setColor(solidColor);
+        xmlDrawable.setShape(GradientDrawable.RECTANGLE);
+        if (strokeWidth > 0) {
+            xmlDrawable.setStroke(strokeWidth, strokeColor);
+        }
+        if (radius > 0) {
+            xmlDrawable.setCornerRadius(radius);
+        }
+
+        return xmlDrawable;
     }
 
     // 修正背景为正圆形radius
@@ -109,10 +125,8 @@ public class ColorfulTextView extends AppCompatTextView{
         }
         if (roundRadius) {
             Drawable background = getBackground();
-            if(background instanceof StateListDrawable || background instanceof GradientDrawable || background instanceof LayerDrawable) {
-                touchUpRadius = height / 2;
-                handleDrawable(background);
-            }
+            touchUpRadius = height / 2;
+            handleDrawable(background);
         }
     }
 
@@ -143,9 +157,15 @@ public class ColorfulTextView extends AppCompatTextView{
         else if (drawable instanceof GradientDrawable) {
             ((GradientDrawable) drawable).setCornerRadius(touchUpRadius);
         }
+        else if (drawable instanceof ColorDrawable) {
+            solidColor = ((ColorDrawable) drawable).getColor();
+            GradientDrawable background = buildDrawable();
+            background.setCornerRadius(touchUpRadius);
+            super.setBackground(background);
+        }
         else {
-            Logs.w(TAG, "invalid drawable type : " + drawable != null
-                    ? drawable.getClass().getSimpleName() : "null");
+            Logs.w(TAG, "invalid drawable type : "
+                    + (drawable != null ? drawable.getClass().getSimpleName() : "null"));
         }
     }
 
@@ -159,7 +179,7 @@ public class ColorfulTextView extends AppCompatTextView{
             }
         }
 
-        if (height > 0 && leftLineColor != 0) {
+        if (height > 0 && leftLineColor != INVALID_COLOR) {
             buildLineDrawable();
         }
 
@@ -191,20 +211,11 @@ public class ColorfulTextView extends AppCompatTextView{
 
     @Override
     public void setBackground(Drawable background) {
-        if (xmlDrawable != null && background == xmlDrawable) {
-            return;
-        }
-        xmlDrawable = null;
-
         super.setBackground(background);
-    }
 
-    @Override
-    public Drawable getBackground() {
-        if (xmlDrawable != null) {
-            return xmlDrawable;
+        if (roundRadius) {
+            requestLayout();
         }
-        return super.getBackground();
     }
 
     public boolean isRoundRadius() {
@@ -216,17 +227,19 @@ public class ColorfulTextView extends AppCompatTextView{
      */
     public void setRoundRadius(boolean roundRadius) {
         this.roundRadius = roundRadius;
+        requestLayout();
     }
 
-    public void buildBackground(DrawableBuilder builder){
-        if(builder.solidColor != 0) {
+    public void buildBackground(DrawableBuilder builder) {
+        if (builder.solidColor != INVALID_COLOR) {
             GradientDrawable xmlDrawable = new GradientDrawable();
             xmlDrawable.setColor(builder.solidColor);
             xmlDrawable.setShape(GradientDrawable.RECTANGLE);
 
             if (builder.strokeWidth > 0) {
-                xmlDrawable.setStroke(builder.strokeWidth, builder.strokeColor != 0
-                        ? builder.strokeColor : builder.solidColor);
+                xmlDrawable.setStroke(builder.strokeWidth,
+                        builder.strokeColor != INVALID_COLOR ? builder.strokeColor
+                                : builder.solidColor);
             }
             if (builder.radius > 0) {
                 xmlDrawable.setCornerRadius(builder.radius);
@@ -242,8 +255,8 @@ public class ColorfulTextView extends AppCompatTextView{
     }
 
     public static class DrawableBuilder {
-        protected int solidColor;
-        protected int strokeColor;
+        protected int solidColor = INVALID_COLOR;
+        protected int strokeColor = INVALID_COLOR;
         protected int strokeWidth;
         protected int radius;
         protected boolean roundRadius;

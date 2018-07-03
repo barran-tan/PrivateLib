@@ -90,4 +90,28 @@
         android:layout_marginTop="@dimen/margin"
         android:text="RoundRadiusBtn style" />
 
+    <com.barran.lib.view.text.ColorfulTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@color/colorPrimary"
+        android:clickable="true"
+        android:padding="6dp"
+        android:text="use xml background"
+        android:textColor="@android:color/white"
+        app:bgRoundRadius="true" />
+
+    <com.barran.lib.view.text.ColorfulTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@color/colorPrimary"
+        android:clickable="true"
+        android:padding="6dp"
+        android:text="use xml background"
+        android:textColor="@android:color/white"
+        app:bgRadius="6dp"
+        app:bgStrokeColor="@android:color/holo_red_dark"
+        app:bgStrokeWidth="1dp" />
+
 </LinearLayout>
