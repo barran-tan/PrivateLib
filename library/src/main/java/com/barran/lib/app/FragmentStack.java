@@ -300,7 +300,7 @@ public class FragmentStack {
         }
         return false;
     }
-    
+
     /**
      * 切换到某个fragment
      *
@@ -309,6 +309,19 @@ public class FragmentStack {
      * @return 切换结果，true成功
      */
     public boolean switchTo(BaseFragment fragment) {
+        return switchTo(fragment, getFragmentDefaultTag(fragment));
+    }
+    
+    private String getFragmentDefaultTag(BaseFragment fragment) {
+        return fragment == null ? null : fragment.getClass().getName();
+    }
+    
+    /**
+     * 切换到某个fragment
+     *
+     * @return 切换结果，true成功
+     */
+    public boolean switchTo(BaseFragment fragment, String tag) {
         
         if (!isUIValid())
             return false;
@@ -347,7 +360,7 @@ public class FragmentStack {
             }
             FragmentTransaction transaction = mFragMgr.beginTransaction();
             hideCurrentSwitchedFragment(transaction, null);
-            transaction.add(mGroupID, fragment).commitAllowingStateLoss();
+            transaction.add(mGroupID, fragment, tag).commitAllowingStateLoss();
             
             mFragStack.push(new WeakReference<>(fragment));
         }
