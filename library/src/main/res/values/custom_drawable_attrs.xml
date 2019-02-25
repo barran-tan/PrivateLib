@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--shape-->
+    <declare-styleable name="Custom_Shape">
+        <attr name="shapeType" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="oval" value="1" />
+            <enum name="line" value="2" />
+            <enum name="ring" value="3" />
+        </attr>
+
+        <attr name="shapeSolidSize" format="dimension" />
+        <attr name="shapeSolidWidth" format="dimension" />
+        <attr name="shapeSolidHeight" format="dimension" />
+        <attr name="shapeSolidColor" format="color" />
+
+        <attr name="shapeStrokeWidth" format="dimension" />
+        <attr name="shapeStrokeColor" format="color" />
+
+        <attr name="shapeCornerRadius" format="dimension" />
+        <attr name="shapeCornerRadiusTopLeft" format="dimension" />
+        <attr name="shapeCornerRadiusTopRight" format="dimension" />
+        <attr name="shapeCornerRadiusBottomLeft" format="dimension" />
+        <attr name="shapeCornerRadiusBottomRight" format="dimension" />
+
+        <attr name="shapeGradientType" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="shapeGradientAngle" format="enum">
+            <enum name="t2b" value="0" />
+            <enum name="tr2bl" value="1" />
+            <enum name="r2l" value="2" />
+            <enum name="br2tl" value="3" />
+            <enum name="b2t" value="4" />
+            <enum name="bl2tr" value="5" />
+            <enum name="l2r" value="6" />
+            <enum name="tl2br" value="7" />
+
+        </attr>
+        <attr name="shapeGradientStartColor" format="color" />
+        <attr name="shapeGradientCenterColor" format="color" />
+        <attr name="shapeGradientEndColor" format="color" />
+        <attr name="shapeGradientRadius" format="dimension" />
+
+    </declare-styleable>
+    <!--shape结束-->
+
+    <!--shape1-->
+    <declare-styleable name="Custom_Shape1">
+        <attr name="shape1Type" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="oval" value="1" />
+            <enum name="line" value="2" />
+            <enum name="ring" value="3" />
+        </attr>
+
+        <attr name="shape1SolidSize" format="dimension" />
+        <attr name="shape1SolidWidth" format="dimension" />
+        <attr name="shape1SolidHeight" format="dimension" />
+        <attr name="shape1SolidColor" format="color" />
+
+        <attr name="shape1StrokeWidth" format="dimension" />
+        <attr name="shape1StrokeColor" format="color" />
+
+        <attr name="shape1CornerRadius" format="dimension" />
+        <attr name="shape1CornerRadiusTopLeft" format="dimension" />
+        <attr name="shape1CornerRadiusTopRight" format="dimension" />
+        <attr name="shape1CornerRadiusBottomLeft" format="dimension" />
+        <attr name="shape1CornerRadiusBottomRight" format="dimension" />
+
+        <attr name="shape1GradientType" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="shape1GradientAngle" format="enum">
+            <enum name="t2b" value="0" />
+            <enum name="tr2bl" value="1" />
+            <enum name="r2l" value="2" />
+            <enum name="br2tl" value="3" />
+            <enum name="b2t" value="4" />
+            <enum name="bl2tr" value="5" />
+            <enum name="l2r" value="6" />
+            <enum name="tl2br" value="7" />
+
+        </attr>
+        <attr name="shape1GradientStartColor" format="color" />
+        <attr name="shape1GradientCenterColor" format="color" />
+        <attr name="shape1GradientEndColor" format="color" />
+        <attr name="shape1GradientRadius" format="dimension" />
+
+    </declare-styleable>
+    <!--shape1结束-->
+
+    <!--shape2-->
+    <declare-styleable name="Custom_Shape2">
+        <attr name="shape2Type" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="oval" value="1" />
+            <enum name="line" value="2" />
+            <enum name="ring" value="3" />
+        </attr>
+
+        <attr name="shape2SolidSize" format="dimension" />
+        <attr name="shape2SolidWidth" format="dimension" />
+        <attr name="shape2SolidHeight" format="dimension" />
+        <attr name="shape2SolidColor" format="color" />
+
+        <attr name="shape2StrokeWidth" format="dimension" />
+        <attr name="shape2StrokeColor" format="color" />
+
+        <attr name="shape2CornerRadius" format="dimension" />
+        <attr name="shape2CornerRadiusTopLeft" format="dimension" />
+        <attr name="shape2CornerRadiusTopRight" format="dimension" />
+        <attr name="shape2CornerRadiusBottomLeft" format="dimension" />
+        <attr name="shape2CornerRadiusBottomRight" format="dimension" />
+
+        <attr name="shape2GradientType" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="shape2GradientAngle" format="enum">
+            <enum name="t2b" value="0" />
+            <enum name="tr2bl" value="1" />
+            <enum name="r2l" value="2" />
+            <enum name="br2tl" value="3" />
+            <enum name="b2t" value="4" />
+            <enum name="bl2tr" value="5" />
+            <enum name="l2r" value="6" />
+            <enum name="tl2br" value="7" />
+
+        </attr>
+        <attr name="shape2GradientStartColor" format="color" />
+        <attr name="shape2GradientCenterColor" format="color" />
+        <attr name="shape2GradientEndColor" format="color" />
+        <attr name="shape2GradientRadius" format="dimension" />
+
+    </declare-styleable>
+    <!--shape2结束-->
+
+    <!--selector-->
+    <declare-styleable name="Custom_Selector">
+        <attr name="selectorStateActive" format="reference|color|enum">
+            <enum name="shape" value="0" />
+            <enum name="shape1" value="1" />
+            <enum name="shape2" value="2" />
+        </attr>
+        <attr name="selectorStateActivated" format="reference|color|enum">
+            <enum name="shape" value="0" />
+            <enum name="shape1" value="1" />
+            <enum name="shape2" value="2" />
+        </attr>
+        <attr name="selectorStateChecked" format="reference|color|enum">
+            <enum name="shape" value="0" />
+            <enum name="shape1" value="1" />
+            <enum name="shape2" value="2" />
+        </attr>
+        <attr name="selectorStateEnabled" format="reference|color|enum">
+            <enum name="shape" value="0" />
+            <enum name="shape1" value="1" />
+            <enum name="shape2" value="2" />
+        </attr>
+        <attr name="selectorStateFocused" format="reference|color|enum">
+            <enum name="shape" value="0" />
+            <enum name="shape1" value="1" />
+            <enum name="shape2" value="2" />
+        </attr>
+        <attr name="selectorStatePressed" format="reference|color|enum">
+            <enum name="shape" value="0" />
+            <enum name="shape1" value="1" />
+            <enum name="shape2" value="2" />
+        </attr>
+        <attr name="selectorStateNormal" format="reference|color|enum">
+            <enum name="shape" value="0" />
+            <enum name="shape1" value="1" />
+            <enum name="shape2" value="2" />
+        </attr>
+        <!--selector结束-->
+    </declare-styleable>
+
+    <declare-styleable name="CustomDrawable">
+        <attr name="setAs" format="enum">
+            <enum name="background" value="0" />
+            <enum name="src" value="1" />
+            <enum name="foreground" value="2" />
+        </attr>
+        <attr name="drawableType" format="enum">
+            <enum name="shape" value="0" />
+            <enum name="selector" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>

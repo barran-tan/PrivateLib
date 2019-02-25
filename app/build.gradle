@@ -31,4 +31,10 @@ dependencies {
 
     // lottie
     compile 'com.airbnb.android:lottie:2.2.5'
+
+    // excelpanel
+    compile 'cn.zhouchaoyuan:excelpanel:1.0.4'
+
+    // adaptive table layout
+    compile "com.cleveroad:adaptivetablelayout:1.1.1"
 }

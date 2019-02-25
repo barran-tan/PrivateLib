@@ -63,6 +63,15 @@
         android:layout_marginTop="@dimen/margin"
         android:background="@drawable/bg_btn"
         android:clickable="true"
+        app:bgRadius="3dp"
+        android:text="use xml selector with set radius" />
+
+    <com.barran.lib.view.text.ColorfulTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@drawable/bg_btn"
+        android:clickable="true"
         android:text="use xml selector with round radius"
         app:bgRoundRadius="true" />
 

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
 
     <com.barran.lib.view.text.LimitEditText
         android:id="@+id/test_edit_text"
@@ -23,7 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
         android:onClick="onClick"
-        android:text="lottie" />
+        android:text="lottie"
+        app:drawableType="selector"
+        app:selectorStateNormal="@color/colorAccent"
+        app:selectorStatePressed="@color/colorPrimary" />
 
     <Button
         android:id="@+id/activity_main_test_view"
@@ -31,6 +36,32 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
         android:onClick="onClick"
-        android:text="view" />
+        android:text="view"
+        app:drawableType="selector"
+        app:selectorStateNormal="shape"
+        app:selectorStatePressed="shape1"
+        app:shape1CornerRadius="10dp"
+        app:shape1SolidColor="@android:color/holo_blue_dark"
+        app:shapeCornerRadius="10dp"
+        app:shapeSolidColor="@android:color/holo_blue_light" />
+
+    <Button
+        android:id="@+id/activity_main_test_excel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:onClick="onClick"
+        android:text="excel"
+        app:drawableType="shape"
+        app:shapeCornerRadius="6dp"
+        app:shapeSolidColor="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/activity_main_test_adaptive_table_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:onClick="onClick"
+        android:text="adaptive_table_layout" />
 
 </LinearLayout>

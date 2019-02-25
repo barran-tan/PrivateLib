@@ -3,6 +3,7 @@
     package="com.barran.lib.test">
 
     <application
+        android:name="com.barran.lib.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,6 +20,8 @@
 
         <activity android:name=".TestLottieActivity" />
         <activity android:name=".TestViewActivity" />
+        <activity android:name="com.barran.lib.thirdlib.TestExcelActivity" />
+        <activity android:name="com.barran.lib.thirdlib.TestAdaptiveTableLayoutActivity" />
     </application>
 
 </manifest>
