@@ -121,20 +121,18 @@ public class ColorfulTextView extends AppCompatTextView{
                         .getConstantState();
                 if (drawableContainerState != null) {
                     boolean needRefresh = false;
-                    Drawable[] children = drawableContainerState.getChildren();
                     if (drawableContainerState.getChildCount() > 0) {
+                        Drawable[] children = drawableContainerState.getChildren();
                         for (int i = 0; i < drawableContainerState.getChildCount(); i++) {
                             Drawable d = children[i];
-                            if (d != null) {
-                                if (d instanceof ColorDrawable) {
-                                    d = buildGradientDrawableFromPureColor(
-                                            ((ColorDrawable) d).getColor());
-                                    needRefresh = true;
-                                    Log.d(TAG,
-                                            this + "  initDrawable : change  "
-                                                    + children[i] + "  to  " + d);
-                                    children[i] = d;
-                                }
+                            if (d instanceof ColorDrawable) {
+                                d = buildGradientDrawableFromPureColor(
+                                        ((ColorDrawable) d).getColor());
+                                needRefresh = true;
+                                Log.d(TAG,
+                                        this + "  initDrawable : change  "
+                                                + children[i] + "  to  " + d);
+                                children[i] = d;
                             }
                         }
                     }
@@ -169,7 +167,7 @@ public class ColorfulTextView extends AppCompatTextView{
                             hasException = true;
                         } finally {
                             if (hasException) {
-                                Log.w(TAG,"initDrawable : set from newDrawable");
+                                Log.w(TAG, "initDrawable : set from newDrawable");
                                 super.setBackground(drawableContainerState.newDrawable());
                             }
                         }
