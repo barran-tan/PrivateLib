@@ -64,4 +64,12 @@
         android:onClick="onClick"
         android:text="adaptive_table_layout" />
 
+    <Button
+        android:id="@+id/activity_main_test_view_pager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:onClick="onClick"
+        android:text="view_pager" />
+
 </LinearLayout>

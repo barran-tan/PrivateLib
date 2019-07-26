@@ -4,4 +4,8 @@
     <color name="color_shining">#e24d3d</color>
     <color name="color_text">#666666</color>
 
+    <color name="white_transparent_30">#4DFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
 </resources>

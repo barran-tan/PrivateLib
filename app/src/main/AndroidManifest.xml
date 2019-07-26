@@ -22,6 +22,7 @@
         <activity android:name=".TestViewActivity" />
         <activity android:name="com.barran.lib.thirdlib.TestExcelActivity" />
         <activity android:name="com.barran.lib.thirdlib.TestAdaptiveTableLayoutActivity" />
+        <activity android:name="com.barran.lib.test.TestViewPagerActivity" />
     </application>
 
 </manifest>

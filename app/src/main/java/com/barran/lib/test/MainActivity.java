@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.activity_main_test_adaptive_table_layout:
                 intent.setClass(MainActivity.this, TestAdaptiveTableLayoutActivity.class);
                 break;
+
+                case R.id.activity_main_test_view_pager:
+                intent.setClass(MainActivity.this, TestViewPagerActivity.class);
+                break;
         }
         
         startActivity(intent);
