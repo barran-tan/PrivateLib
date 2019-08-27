@@ -43,4 +43,13 @@
         <attr name="maxLength" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="CornerFrameLayout">
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="bgColor" format="color" />
+        <attr name="borderColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderless" format="boolean" />
+        <attr name="hardwareAccelerate" format="boolean"/>
+    </declare-styleable>
+
 </resources>
