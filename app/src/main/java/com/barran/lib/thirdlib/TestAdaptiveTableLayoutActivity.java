@@ -1,7 +1,7 @@
 package com.barran.lib.thirdlib;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.barran.lib.test.R;
 import com.barran.lib.utils.log.Logs;

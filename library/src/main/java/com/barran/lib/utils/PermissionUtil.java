@@ -1,8 +1,8 @@
 package com.barran.lib.utils;
 
 import android.content.Context;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.PermissionChecker;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.PermissionChecker;
 
 /**
  * Permission

@@ -1,6 +1,6 @@
 package com.barran.lib.view.text;
 
-import android.support.annotation.CallSuper;
+import androidx.annotation.CallSuper;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;

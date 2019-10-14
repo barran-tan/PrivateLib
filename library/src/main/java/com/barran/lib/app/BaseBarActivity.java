@@ -1,14 +1,14 @@
 package com.barran.lib.app;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.barran.lib.R;
 
 /**
- * 封装{@linkplain android.support.v7.widget.Toolbar ToolBar}
+ * 封装{@linkplain androidx.appcompat.widget.Toolbar ToolBar}
  *
  * Created by tanwei on 2017/10/20.
  */

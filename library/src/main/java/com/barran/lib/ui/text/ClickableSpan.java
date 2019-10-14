@@ -1,6 +1,6 @@
 package com.barran.lib.ui.text;
 
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 import android.text.TextPaint;
 import android.view.View;
 
